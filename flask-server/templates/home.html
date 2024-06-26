@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_home.css') }}">
+</head>
+<body>
+    <!--<h1>Dishes List</h1> !-->
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">Recipe Viewer</span>
+            <span class="navbar-nav">
+                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" href="/recipes">Recipe Search</a>
+                <a class="nav-link" href="/uploads">Upload</a>
+            </span>
+        </div>
+    </nav>
+    <ul>
+        {% for dish in dishes %}
+        <li>{{ dish }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
