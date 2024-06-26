@@ -1,4 +1,12 @@
 from flask import Flask
+import sqlite3
+
+connection = sqlite3.connect('database.db')
+
+with open('schema.sql') as f:
+    connection.executescript(f.read())
+
+cur = connection.cursor()
 
 app = Flask(__name__) 
 
