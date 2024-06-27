@@ -17,9 +17,12 @@ RecipeViewer is a web application designed to help users discover, search, and s
 - SQLAlchemy
 - Requests
 
-### Installation
+### Installation and Execution
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/RecipeViewer.git
    cd RecipeViewer
+1. Run the app on your computer:
+   ```bash
+   python3 flask-server/app.py
