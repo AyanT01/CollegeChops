@@ -5,9 +5,10 @@ jobs:
   check-style:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.11.3
@@ -15,5 +16,18 @@ jobs:
       - name: Install tools
         run: python -m pip install --upgrade pip pycodestyle
 
+      - name: Debug - Show current directory
+        run: pwd
+
+      - name: Debug - List all files in the repository
+        run: ls -R
+
+      - name: Debug - List Python files
+        run: ls -l src/*.py || echo "No Python files found"
+
       - name: Check Style
-        run: pycodestyle --first *.py
+        run: |
+          if ls src/*.py 1> /dev/null 2>&1; then
+            pycodestyle --first src/*.py
+          else
+            echo "No Python files to check."
