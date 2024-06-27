@@ -62,7 +62,8 @@ def success():
 @app.route("/dishes/<int:dish_id>")
 def dish(dish_id):
     recipe = Recipe.query.get_or_404(dish_id)
-    return render_template("recipes.html", recipe=recipe)
+    print(recipe)
+    return render_template("dish.html", recipe=recipe)
 
 
 if __name__ == '__main__':
