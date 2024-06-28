@@ -20,11 +20,14 @@
             </span>
         </div>
     </nav>
-    <ul>
+    <div class="container">
         {% for dish in dishes %}
-        <li>{{ dish }}</li>
+            <div class="recipe-card">
+                <h2>{{ dish.title }}</h2>
+                <p>{{ dish.description }}</p>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
 

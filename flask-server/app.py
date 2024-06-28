@@ -13,10 +13,6 @@ with app.app_context():
     db.create_all()
 
 
-@app.route('/members')
-def members():
-    members_list = ["Member1", "Member2", "Member3"]
-    return render_template('index.html', members=members_list)
 
 
 @app.route('/home')
@@ -37,9 +33,7 @@ def uploads():
         cost = request.form.get('cost')
         image = request.files['image']  # Uploaded file - Tentative
 
-        # Save the uploaded image to the server (optional)
-        # image_filename = secure_filename(image.filename)
-        # image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_filename))
+
 
         # Create a new Recipe object and add to the database
         new_recipe = Recipe(
