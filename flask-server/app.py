@@ -59,6 +59,20 @@ def dish(dish_id):
     print(recipe)
     return render_template("dish.html", recipe=recipe)
 
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    if query:
+        search_query = "%{}%".format(query)
+        results = Recipe.query.filter(
+            (Recipe.title.ilike(search_query)) |
+            (Recipe.description.ilike(search_query)) |
+            (Recipe.ingredients.ilike(search_query)) |
+            (Recipe.instructions.ilike(search_query))
+        ).all()
+    else:
+        results = []
+    return render_template('search_results.html', query=query, results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

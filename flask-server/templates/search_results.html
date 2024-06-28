@@ -1,0 +1,28 @@
+<!-- search_results.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results for "{{ query }}"</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Search Results for "{{ query }}"</h1>
+    {% if results %}
+        <div class="list-group">
+            {% for recipe in results %}
+                <a href="{{ url_for('dish', dish_id=recipe.id) }}" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ recipe.title }}</h5>
+                    <p class="mb-1">{{ recipe.description }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Home</a>
+</div>
+</body>
+</html>
